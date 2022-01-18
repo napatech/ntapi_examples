@@ -1,0 +1,8 @@
+delete=all
+
+HashMode[Priority=0; InnerLayer3Type=IP;InnerLayer4Type=TCP,UDP,SCTP] = HashInner5TupleSorted 
+HashMode[Priority=1; InnerLayer3Type=IP] = HashInner2TupleSorted 
+HashMode[Priority=2; Layer4Type=UDP,TCP,SCTP]=Hash5TupleSorted
+HashMode[Priority=3; Layer3Type=IP]=Hash2TupleSorted 
+
+Assign[Priority=0; StreamId=(0..3)] = All

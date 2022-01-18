@@ -1,0 +1,114 @@
+BUFFER PROFILING TOOL:
+
+--------------------------------------------------------------------------------
+Overview:
+    Often when packet drops occur it is difficult to fully understand the 
+    conditions that lead up to the drop.
+
+    This program will track port, buffer and CPU utilization and monitor for
+    packet loss.  When dropped packets are detected information about the state
+    of the system is output every second; starting five seconds prior to the drop
+    and continuing until no more drops are detected.
+
+
+
+Usage:
+  Syntax:
+    bufferProfile [--help] [-h] [-f] [-d] [-k] [-c]
+  
+  Optional Arguments:
+    -f <filename>   : Name of file where update will be output.  This is a 
+                      : required option when running as a daemon
+    -c              : Continuous operation.  This option will output statistics
+                      : every second regardless of whether drops have occured.
+    -d              : Run this program as a daemon.  The -f <filename> option
+                      : must be specified when running as a daemon
+    -k              : Kill a running daemon instance.
+    --help, -h      : Displays the help.;
+
+
+--------------------------------------------------------------------------------
+Example Output:
+
+Below is an example of the data that is output.  This will be output once per 
+second, beginning five seconds prior to the drop, when drops are detected.  Or, 
+when running in continuous mode, this will be output once per second regardless
+of whether drops occur.  
+
+These entries are:
+
+Ports:
+
+    Mbps: the throughput of the traffic that is being received on each port.
+
+Streams:
+    pkts: The number of packets received on each stream during in the past second.
+
+    Gbps: The throughput rate on each stream during the past second.
+
+    hbuffUtil: The average utilization (percentage used) of the host buffers for 
+               each stream during the past second.
+
+    sdramUtil: The average utilization (percentage used) of the on-board SDRAM 
+               for each stream during the past second.
+
+    pktsDrop:  The number of packets dropped for each stream during the past second.
+
+CPU:
+
+    utilization:  The average utilization of each CPU core during the past second.
+
+
+======================================================================================================
+
+File created at: 2017/03/17-08:39:29.310992000
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+time: 2017/03/17-08:40:15.368667000
+
+-------- Ports --------
+Mbps: 
+     9000         0 
+
+-------- Streams --------
+pkts: 
+    68333     68332     68333     68333 
+
+Gbps: 
+     2.24      2.24      2.24      2.24 
+
+hbuffUtil: 
+        0         0        98         0 
+
+sdramUtil: 
+        0         0        77         0 
+
+pktsDrop : 
+        0         0         0         0 
+
+-------- CPU --------
+Utilization:
+    0     0     0     1     0     0     0     2     0     0     1     1     0     1     0     0
+    0     0     1     1     0     0     1     0     1     0     0     0     0     0     1     0
+    0     0     0     0     4     0     1     0     0     0     0     0     0     0     0     0
+
+--------------------------------------------------------------------------------
+Example Usage:
+
+    When run without any arguments usage statistics will be output to the terminal
+    display only when drops are detected:
+
+        bufferProfile
+
+    The following will continuously output usage statistics to the terminal display
+    whether or not drops are occuring:
+
+        bufferProfile -c
+
+    The following is the most common usage.  This will run the tool in daemon mode and output 
+    data to a file only when drops are detected:
+
+        bufferProfile -d -f <filename>
+
+
+
