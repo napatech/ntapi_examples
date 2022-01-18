@@ -1,0 +1,8 @@
+[package]
+description = Packet source plugin that provides native support for NTAPI
+tags = packet source, plugin, napatech, ntapi
+depends = 
+  zkg >=2.0
+  zeek >=4.0.0
+plugin_dir = build/Zeek_Napatech.tgz
+build_command = (./configure --bro-dist=%(bro_dist)s && make)

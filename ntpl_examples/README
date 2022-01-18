@@ -1,0 +1,52 @@
+- IPv6
+    - traffic file: ./pcap/IPv6.pcap
+
+    - examples:
+
+       - IPv6.ntpl: filter on a single IPv6 address using the Key Matcher
+
+       - IPv6_range.ntpl: filter on a range of IPv6 addresses using the Key Matcher
+
+       - IPv6_mask.ntpl: filter on an IPv6 subnet using a mask with the Key Matcher
+
+    - notes:
+
+        - all of these examples will pass 75 of the 161 packets in the pcap file
+
+        - notice how the CAM and TCAM usages changes when using a single address vs. a range or mask
+
+
+- VxLAN
+    - traffic file: ./pcap/VxLAN_4vni.pcap
+
+    - examples:
+
+        - VxLAN_decap_2host.ntpl: decapsulates VxLAN packets and delivers inner packets to the host.
+
+        - VxLAN_decap_2ReTx.ntpl: decapsulates and retransmits inner packets out ports [0..3] based 
+          on vni field of VxLAN header as follows:
+              vni == 1 -> port 0
+              vni == 2 -> port 1
+              vni == 3 -> port 2
+              vni == 4 -> port 3
+
+        - VxLAN_decap_2host_2ReTx.ntpl: decapsulates VxLAN packets and delivers inner packets to host 
+          and also retransmits the packets.  Packets are delivered to ports and streams as follows:
+              vni == 1 -> stream 0 -> port 0
+              vni == 2 -> stream 1 -> port 1
+              vni == 3 -> stream 2 -> port 2
+              vni == 4 -> stream 3 -> port 3
+
+
+- Retransmit
+
+    - traffic file: any
+
+    - examples:
+
+        - ReTx.ntpl: retransmits all packets arriving on port 0 to port 1 and visa versa
+
+	- ReTx_and_deliver_2host.ntpl: Similar to ReTx.ntpl, but also delivers traffic from port 0 to stream 0 
+          and traffic from port 1 to stream 1
+
+

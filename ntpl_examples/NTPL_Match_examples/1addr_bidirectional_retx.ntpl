@@ -1,0 +1,29 @@
+delete=all
+
+// Define fields
+Define IPv4Src = Field(Layer3Header[12]/32)
+Define Ipv4Dst = Field(Layer3Header[16]/32)
+
+// Define Key Type
+KeyType[Name=KT_v4_1A; Access=Full]   = {32}
+
+// Define keys
+KeyDef[name=KD_v4Src;    KeyType=KT_v4_1A] = (IPv4Src)
+KeyDef[name=KD_v4Dest;   KeyType=KT_v4_1A] = (IPv4Dst)
+
+KeyList[KeySet = 8;KeyType=KT_v4_1A] = ([192.168.1.1])
+
+// Set up filters
+
+DefineMacro("DiameterTowardsTenant",  "(IsIPv4 AND KeyMatch(IPv4Dst) == TenantIPv4DiameterAddrs)")
+DefineMacro("DiameterFromTenant",     "(IsIPv4 AND KeyMatch(IPv4Src) == TenantIPv4DiameterAddrs)")
+
+Retransmit [SourcePort = NapaRxPort1; DestinationPort = NapaDiameterTxPort] = DiameterTowardsTenant
+Retransmit [SourcePort = NapaRxPort1; DestinationPort = NapaDiameterTxPort] = DiameterFromTenant
+
+Assign[StreamId=0;priority=0]   = (Port == 0) AND ((Layer3Protocol == IPv4) AND ((Key(KD_v4Src) == 8) OR (Key(KD_v4Dest) == 8)) )
+Assign[StreamId=1;priority=0]   = (Port == 1) AND ((Layer3Protocol == IPv4) AND ((Key(KD_v4Src) == 8) OR (Key(KD_v4Dest) == 8)) )
+
+Retransmit[SourcePort=0;DestinationPort=1] = ((Layer3Protocol == IPv4) AND ((Key(KD_v4Src) == 8) OR (Key(KD_v4Dest) == 8)) )
+
+

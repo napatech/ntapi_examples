@@ -1,0 +1,16 @@
+delete = all
+
+// Define fields
+Define VxLAN = HeaderStripper(Begin=StartOfFrame[0], End=InnerLayer2Header[0])
+
+// Define 
+DefineMacro("VxLANID", "Layer4Protocol==UDP and Data[ProtOffset=Layer4Payload[6];DataType=ByteStr1]")
+
+Assign[destinationPort=0] = (VxLANID == 1)
+Assign[destinationPort=1] = (VxLANID == 2)
+Assign[destinationPort=2] = (VxLANID == 3)
+Assign[destinationPort=3] = (VxLANID == 4)
+
+FilterInfo=all
+
+

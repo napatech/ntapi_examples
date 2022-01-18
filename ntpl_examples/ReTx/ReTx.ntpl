@@ -1,0 +1,8 @@
+delete = all
+
+Assign[destinationPort=1] = (port == 0)
+Assign[destinationPort=0] = (port == 1)
+
+FilterInfo=all
+
+

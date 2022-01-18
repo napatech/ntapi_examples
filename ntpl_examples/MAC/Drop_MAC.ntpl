@@ -1,0 +1,10 @@
+delete=all
+
+DefineMacro("mSrcMAC",  "Data[ProtOffset=Layer2Header[6]; DataType=MacAddr]")
+DefineMacro("mDstMAC",  "Data[ProtOffset=Layer2Header[0]; DataType=MacAddr]")
+
+#STP Address
+# Assign[StreamId=drop; priority=0] = (mDstMAC == [01:80:C2:00:00:00])
+
+Assign[StreamId=drop; priority=0] = (mDstMAC == [00:00:00:01:00:08])
+Assign[streamID=0;priority=1] = all

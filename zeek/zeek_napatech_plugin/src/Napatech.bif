@@ -1,0 +1,8 @@
+# Options for the Napatech packet source.
+
+
+module Napatech;
+
+# const test_value: count;
+# const ntpl_cmd: string;
+

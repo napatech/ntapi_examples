@@ -1,0 +1,15 @@
+delete=all
+
+// Macros for definition of the UDP Protocol Header
+DefineMacro("mUdpSrcPort",  "Data[DynOffset=DynOffUDPFrame;Offset=0;DataType=ByteStr2]")
+DefineMacro("mUdpDestPort", "Data[DynOffset=DynOffUDPFrame;Offset=2;DataType=ByteStr2]")
+  DefineMacro("mUdpPort_ESP",                       "50")
+  DefineMacro("mUdpPort_ISAKMP",                    "4500")
+ 
+DefineMacro("mIPv4Protocol",       "Data[DynOffset=DynOffIPv4Frame;Offset=9;DataType=ByteStr1]")
+  DefineMacro("mIPv4Protocol_ESP",   "50")
+
+
+Assign[streamid=0; Priority = 0] = (mUdpSrcPort == mUdpPort_ISAKMP) OR (mUdpDestPort == mUdpPort_ISAKMP)
+
+Assign[streamid=1; Priority = 0] = (mIPv4Protocol == mIPv4Protocol_ESP) OR (mUdpDestPort == mUdpPort_ISAKMP) OR (mUdpSrcPort == mUdpPort_ISAKMP)

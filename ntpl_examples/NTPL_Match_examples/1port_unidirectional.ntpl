@@ -1,0 +1,21 @@
+//
+// All traffic to TCP Port 80 goes to stream 0; everything else to stream 1
+//
+delete=all
+
+// Define fields
+Define DstPort = Field(Layer4Header[2]/16)
+
+//Define key type, enable dual lookup and enable assigning color 
+KeyType[Name=KT_1port; Access=Full] = {16}
+
+// Define keys that extract Destination port 
+KeyDef[Name=Kd_DstPort; KeyType=KT_1port] = (DstPort)
+
+// Keys can now be added
+KeyList[KeySet = 3;KeyType=KT_1port] = (80),(81),(83),(84)
+KeyList[KeySet = 3;KeyType=KT_1port] = (442),(443),(1000),(1002)
+
+// Set up filter
+Assign[StreamId=0;priority=0] = (Port==0,1) and (Layer4Protocol == TCP) and (Key(Kd_DstPort) == 3)
+Assign[streamId=1;priority=1] = (Port==0,1)

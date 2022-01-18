@@ -1,0 +1,7 @@
+delete = all
+
+Assign[StreamID=0] = port==0
+Assign[StreamID=1] = port==1
+Assign[StreamID=2] = port==2
+Assign[StreamID=3] = port==3
+

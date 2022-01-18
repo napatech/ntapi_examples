@@ -1,0 +1,140 @@
+--- Overview:
+
+This program, ntfilterd, is a utility that allows IP addresses to be filtered 
+by a Napatech Accelerator to be specified in a simple text file.  The program 
+runs as a daeomon.  It takes as input the name of a file containing the IP 
+addresses to be filtered.  It watches the file and when it see that the file has 
+changed it updates the NTPL filters applied to the card.
+
+Output about the status operation of the daemon is directed to the system log 
+files.  Running the command
+
+   [root@localhost filter_daemon]# tail -f /var/log/messages 
+
+when testing this program is useful to if the program is working correctly and
+to see NTPL commands that are applied as the filter file is changed.  The 
+program can also be run in Debug mode in which case the program is run within a 
+terminal windows instead of as a daemon.
+
+
+--- Program Arguments:
+
+  --help, -h     : Displays help and exit.
+
+  -f             : Name of file containing IP Addresses to filter.  If the 
+                   file already exists than the existing file will be opened.  
+                   Otherwise, a new file will be created.  The user can then add
+                   IP addresses to this newly created file.
+
+  -l             : The name of a file to write the log of the programs operation.
+
+  -s             : The integer ID of the stream, or a range of streams
+                   (e.g. 0..3), to which filters will be applied.
+  
+  -c             : The integer ID of the color that will be assigned to
+                   to the filters created by this instance.
+  
+  -p             : The base priority from 0..61 that is to be applied to
+                   the filters created by this program.  This option allows
+                   the priority of filters created within the context of
+                   this program to be coordinated with filters created
+                   outside of this program.
+
+  -d             : Debug mode. In this mode the program will run within a
+                   terminal instead of as a daemon.
+  
+  -k             : Terminate the running daemon.
+  
+
+--- Example commands:
+
+The following will launch the daemon creating/opening the file filters.ntf and
+assigning filters to stream 1.  Packets matching the IP addresses specified in 
+filters.ntf will be directed to stream 0.
+
+    [root@localhost filter_daemon]# ./ntfilterd  -f ./filters.ntf -s 1
+
+The following will launch the daemon creating/opening the file filters.ntf and
+assigning filters to stream 0 through 3.  Packets matching the IP addresses 
+specified in filters.ntf will be delievered to streams 0..3 according to the 
+hashmode in effect on the card.  (The hashmode must be set via NTPL external to 
+the filter daemon).
+
+    [root@localhost filter_daemon]# ./ntfilterd  -f ./filters.ntf -s 0..3
+
+
+The following will launch the daemon creating/opening the file filters.ntf and
+assigning filters to stream 0 through 3.  Similar to the above example packets 
+matching the IP addresses specified in filters.ntf will be delievered to streams 
+0..3 according to the hashmode in effect on the card.  However, in this case a
+color value of 4 will be applied to the packets before they are delivered to the
+host.
+
+    [root@localhost filter_daemon]# ./ntfilterd  -f ./filters.ntf -s 0..3 -c 4
+
+The following is similar to the first example except that the priority of the 
+filters created by the filter daemon will be based at 10 instead of the default 
+of zero.  This will allow other higher priority filter expressions to be 
+specified outside of the context of the filter daemon.
+
+    [root@localhost filter_daemon]# ./ntfilterd  -f ./filters.ntf -s 1 -p 10
+
+
+
+The following is similar to the first example except that the program is run in
+Debug mode.  In this case the program does not spawn a daemon and output messages
+are displayed in the terminal windows as well as in the system log.
+
+    [root@localhost filter_daemon]# ./ntfilterd  -f ./filters.ntf -s 1 -d
+
+
+-- Filter file format:
+
+Each line of the filter file contains an IP address that is to be directed to 
+the stream(s) specified on the programs command line.  Each address can be 
+preceeded with either "src" or "dst" to indicate if packets with addresses 
+only matching the source or destination address are to be matched.  By default,
+if neither src or dst is specified then packets with the address in either field
+will match.
+
+Comments can be inserted into the filter file using the '#' character.
+
+Below are sample entries in the filter file:
+
+
+# This will match packets that have the source address of 17.17.17.17 
+#
+src 17.17.17.17
+
+
+# This will match packets that have the destination address of 16.16.16.16 
+#
+dst 16.16.16.16
+
+
+# This entry will match any packets with 17.17.17.17 in either the source or 
+# destination fields.
+#
+17.17.17.17
+
+
+# Optionally, both src and dst can be specified.  This entry will match any 
+# packets with 16.16.16.16 in either the source or destination fields.
+#
+src dst 16.16.16.16
+
+
+# Below are examples of IPv6 address specification in the filter file
+2000::1
+src 2000:0000:0000:0000:0000:0000:0000:0002
+dst 2000:0000:0000:0000:0000:0000:0000:0003
+2000:0000:0000:0000:0000:0000:0000:0004
+
+# A range of addresses can be specified by using ".." between the addresses. E.g.:
+192.168.1.0..192.168.1.16
+
+# a subnet can be specified using a slash followed by the number of bits in the 
+# bitmask.  E.g.:
+10.200.20.0/24
+
+

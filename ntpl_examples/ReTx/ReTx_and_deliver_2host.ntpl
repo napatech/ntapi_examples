@@ -1,0 +1,9 @@
+delete = all
+
+
+Assign[streamid=0; destinationPort=0] = (port == 0)
+Assign[streamid=1; destinationPort=1] = (port ===1)
+
+FilterInfo=all
+
+

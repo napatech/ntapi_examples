@@ -1,0 +1,12 @@
+# This is an example IP substitution file.
+# it is implemented using YAML so there cannot be any 
+# white space preceeding any of the entries
+# Run this as follows:
+# ./addrswap_replay -p 1 -f ./test.pcap -s ./test.yaml
+#
+
+10.0.2.15: 1.1.1.1
+10.0.2.16: 1.1.1.2
+10.0.2.17: 1.1.1.3
+10.0.2.18: 1.1.1.4
+  

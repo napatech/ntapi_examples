@@ -1,0 +1,102 @@
+Delete = All
+
+# Set up key types that match on 32 and 16 bit fields respectively
+KeyType[Name=KT_IPv4Pair; Access=Full] = {32, 32}
+KeyType[Name=KT_Port; Access=Full] = {16}
+
+# Set up key definitions that define where to find the 32/16-bit fields
+KeyDef[Name=KD_Ipv4Pair; KeyType=KT_IPv4Pair] = (Layer3Header[12]/32, Layer3Header[16]/32)
+KeyDef[Name=KD_PortSrc; KeyType=KT_Port] = (Layer4Header[0]/16)
+KeyDef[Name=KD_PortDst; KeyType=KT_Port] = (Layer4Header[2]/16)
+
+# Match-values for port 2
+KeyList[KeyType=KT_IPv4Pair; KeySet=3] = ([10.4.2.184], [10.4.100.207])
+KeyList[KeyType=KT_IPv4Pair; KeySet=3] = ([10.4.100.207], [10.4.2.184])
+KeyList[KeyType=KT_Port; KeySet=4] = (80)
+
+# Match-values for port 3
+KeyList[KeyType=KT_IPv4Pair; KeySet=5] = ([10.4.2.184], [10.4.58.103])
+KeyList[KeyType=KT_IPv4Pair; KeySet=5] = ([10.4.58.103], [10.4.2.184])
+KeyList[KeyType=KT_Port; KeySet=6] = (51949)
+
+# Match-values for port 4
+KeyList[KeyType=KT_IPv4Pair; KeySet=7] = ([10.4.2.87], [66.169.121.58])
+KeyList[KeyType=KT_IPv4Pair; KeySet=7] = ([66.169.121.58], [10.4.2.87])
+KeyList[KeyType=KT_Port; KeySet=8] = (5050)
+
+# Match-values for port 5
+KeyList[KeyType=KT_IPv4Pair; KeySet=9] = ([10.4.58.86], [10.4.58.12])
+KeyList[KeyType=KT_IPv4Pair; KeySet=9] = ([10.4.58.12], [10.4.58.86])
+KeyList[KeyType=KT_Port; KeySet=10] = (161)
+
+# Match-values for port 6
+KeyList[KeyType=KT_IPv4Pair; KeySet=11] = ([74.125.25.108], [10.4.5.22])
+KeyList[KeyType=KT_IPv4Pair; KeySet=11] = ([10.4.5.22], [74.125.25.108])
+KeyList[KeyType=KT_Port; KeySet=12] = (993)
+
+# Match-values for port 7
+KeyList[KeyType=KT_Port; KeySet=13] = (110)
+
+
+# Match on each port
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 2) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 3) \
+    AND (Key(KD_PortSrc) == 4)
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 2) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 3) \
+    AND (Key(KD_PortDst) == 4)
+
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 3) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 5) \
+    AND (Key(KD_PortSrc) == 6)
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 3) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 5) \
+    AND (Key(KD_PortDst) == 6)
+
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 4) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 7) \
+    AND (Key(KD_PortSrc) == 8)
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 4) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 7) \
+    AND (Key(KD_PortDst) == 8)
+
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 5) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 9) \
+    AND (Key(KD_PortSrc) == 10)
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 5) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 9) \
+    AND (Key(KD_PortDst) == 10)
+
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 6) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 11) \
+    AND (Key(KD_PortSrc) == 12)
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 6) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND (Key(KD_IPv4Pair) == 11) \
+    AND (Key(KD_PortDst) == 12)
+
+Assign[Priority=0; Color=0; StreamId=65; TxIgnore=TRUE] = \
+    (Port == 7) \
+    AND ((Layer4Protocol == UDP) OR (Layer4Protocol == TCP)) \
+    AND ((Key(KD_PortSrc) == 13) OR (Key(KD_PortDst) == 13))
+
+Filterinfo = All

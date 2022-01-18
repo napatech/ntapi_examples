@@ -1,0 +1,24 @@
+delete=all
+
+// Define fields
+Define IPv4Src = Field(Layer3Header[12]/32)
+Define Ipv4Dst = Field(Layer3Header[16]/32)
+
+// Define Key Type
+KeyType[Name=KT_v4_1A; Access=Full]   = {32}
+
+// Define keys
+KeyDef[name=KD_v4Src;    KeyType=KT_v4_1A] = (IPv4Src)
+KeyDef[name=KD_v4Dest;   KeyType=KT_v4_1A] = (IPv4Dst)
+
+KeyList[KeySet = 8;KeyType=KT_v4_1A] = ([161.181.182.191])
+#KeyList[KeySet = 8;KeyType=KT_v4_1A] = ([172.46.71.213])
+
+// Set up filters
+
+Assign[StreamId=0;priority=0]   = (Port == 0,1) AND ((Layer3Protocol == IPv4) AND ((Key(KD_v4Src) == 8) OR (Key(KD_v4Dest) == 8)) )
+
+#Assign[StreamId=0;priority=0]   = (Layer3Protocol == IPv4) AND (Key(KD_v4Src) == 8)
+
+
+

@@ -1,0 +1,23 @@
+
+#!/bin/sh
+#
+
+plugin_usage() {
+    cat <<EOF
+    --with-napatech=DIR         Path to napatech installation
+EOF
+}
+
+plugin_option() {
+
+    case "$1" in
+        --with-napatech=*)
+            append_cache_entry NAPATECH_ROOT_DIR PATH $optarg
+            return 0
+            ;;
+
+        *)
+            return 1;
+            ;;
+    esac
+}

@@ -1,0 +1,8 @@
+delete = all
+
+Define VxLAN = HeaderStripper(Begin=StartOfFrame[0], End=InnerLayer2Header[0])
+Assign[StreamID=0; HeaderStripper=VxLAN] = port==0
+Assign[StreamID=1; HeaderStripper=VxLAN] = port==1
+Assign[StreamID=2; HeaderStripper=VxLAN] = port==2
+Assign[StreamID=3; HeaderStripper=VxLAN] = port==3
+

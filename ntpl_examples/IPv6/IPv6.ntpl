@@ -1,0 +1,17 @@
+delete = all
+
+Define OutSrcIPv6 = Field(Layer3Header[8]/128)
+Define OutDstIPv6 = Field(Layer3Header[24]/128)
+
+KeyType[Name=Ipv6; Access = Full] = {128}
+
+KeyDef[Name=OutSrcV6; KeyType=Ipv6] = (OutSrcIPv6)
+KeyDef[Name=OutDstV6; KeyType=Ipv6] = (OutDstIPv6)
+
+KeyList[KeyType=Ipv6; KeySet=8] = ([3ffe:507:0:1:200:86ff:fe05:80da])
+
+Assign[StreamId=0] = ((Port == 0) AND ((Key(OutSrcV6) == 8)))
+
+FilterInfo=all
+
+

@@ -1,0 +1,28 @@
+//
+// All traffic to or from TCP Port 80 goes to stream 0; everything else to stream 1
+//
+delete=all
+
+// Define fields
+Define SrcPort = Field(Layer4Header[0]/16)
+Define DstPort = Field(Layer4Header[2]/16)
+
+// Define Up- and Downstream hash recipes
+Define HashUpV4   = Hash(HashWord8=SrcPort)
+Define HashDownV4 = Hash(HashWord8=DstPort)
+
+//Define key type, enable dual lookup and enable assigning color 
+KeyType[Name=KT_2port; Access=Full] = {16, 16}
+
+// Define keys that extract Destination port 
+KeyDef[Name=Kd_2PortsUp; KeyType=KT_2port] = (SrcPort, DstPort)
+KeyDef[Name=Kd_2PortsDn; KeyType=KT_2port] = (DstPort, SrcPort)
+
+// Keys can now be added
+KeyList[KeySet = 6;KeyType=KT_2port] = (51673, 80),(51674, 81)
+
+// Set up filter
+Assign[StreamId=0;priority=0;Hash=HashUpV4]   = (Port==0,1) and (Layer4Protocol == TCP) and ((Key(Kd_2PortsUp) == 6)   and (Key(Kd_2PortsDn) == ANY))
+Assign[StreamId=0;priority=0;Hash=HashDownV4] = (Port==0,1) and (Layer4Protocol == TCP) and ((Key(Kd_2PortsUp) == ANY) and (Key(Kd_2PortsDn) == 6))
+
+//Assign[streamId=1;priority=1] = (Port==0,1)

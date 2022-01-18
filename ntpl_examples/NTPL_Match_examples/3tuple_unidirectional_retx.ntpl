@@ -1,0 +1,26 @@
+delete=all
+
+// Define fields
+Define IPv4Src = Field(Layer3Header[12]/32)
+Define Ipv4Dst = Field(Layer3Header[16]/32)
+
+// Define Up- and Downstream hash recipes
+Define HashUp   = Hash(HashWord0_3=IPv4Src, HashWord4_7=IPv4Dst)
+Define HashDown = Hash(HashWord0_3=IPv4Dst, HashWord4_7=IPv4Src)
+
+// Define Key Type
+KeyType[name=KT_2Tuple; Access=Full; ColorInfo=True] = {32, 32}
+
+// Define keys
+KeyDef[name=KD_2TupleUp;   KeyType=KT_2Tuple] = (IPv4Src, IPv4Dst)
+KeyDef[name=KD_2TupleDown; KeyType=KT_2Tuple] = (IPv4Dst, IPv4Src)
+
+KeyList[KeySet = 7;KeyType=KT_2Tuple] = ([10.0.2.15],[192.168.1.1])
+
+// Set up filters
+//Assign[StreamId=1;priority=1]=port==0,1,2,3
+
+Assign[StreamId=0;priority=0;Hash=HashUp]   = (port==0,1) AND (Layer3Protocol == IPv4) AND (Key(KD_2TupleUp) == 7)   AND (Key(KD_2TupleDown) == ANY)
+Assign[StreamId=0;priority=0;Hash=HashDown] = (port==0,1) AND (Layer3Protocol == IPv4) AND (Key(KD_2TupleUp) == ANY) AND (Key(KD_2TupleDown) == 7)
+
+
