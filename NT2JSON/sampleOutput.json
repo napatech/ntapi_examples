@@ -1,0 +1,929 @@
+{
+  "sysTime":145625329324033900,
+  "sysTimeStr":"2016\/02\/23-13:48:13.240339000",
+  "system":{
+    "numAdapters":2,
+    "numNumaNodes":2,
+    "numPorts":2,
+    "version":"3.0.7.5"
+  },
+  "adapters":[
+    {
+      "id":0,
+      "name":"NT100E3-1-PTP-ANL Analysis Network Adapter PCIe Gen3 1x100Gb CFP4",
+      "ProductInfo":{
+        "Product No":"811-0001-01-06",
+        "Serial No":"0000-214999",
+        "PBA":"073-012101-03",
+        "AVR Version":"3.1",
+        "FPGA flash image #0":"200-9504-01-12",
+        "FPGA flash image #1":"200-9231-52-03"
+      },
+      "TimeSync":{
+        "Info":{
+          "timeSyncSupported":1,
+          "ptpSupported":0,
+          "timeSyncConnectorExt1":"NTTS_IN",
+          "timeSyncConnectorInt1":"NTTS_OUT",
+          "timeSyncConnectorInt2":"NTTS_OUT",
+          "tsRefPrio":" EXT1;OSTIME",
+          "timeRef":"OSTIME",
+          "tsFreqRefPrio":" FREE_RUN",
+          "freqRef":"FREE_RUN",
+          "timeSyncNTTSInSyncLimit":5000,
+          "timeSyncOSInSyncLimit":50000,
+          "timeSyncPPSInSyncLimit":5000,
+          "timeSyncPTPInSyncLimit":5000,
+          "timeSyncInSyncStatus":"IN_SYNC",
+          "timeSyncCurrentConStatus":"None",
+          "timeSyncPpsEnable":"DISABLED",
+          "timeSyncPpsSyncMode":"NOT_SYNCING",
+          "timeSyncClockAdjustmentMode":2,
+          "timeSyncHardReset":1,
+          "timeSyncTimeJumpThreshold":1,
+          "timeSyncTimeOffset":0,
+          "timeSyncPpsSampled":0,
+          "timeSyncTimeSkew":0,
+          "highFrequencySampling":0,
+          "timeSyncAdapterToOSSyncEnabled":0,
+          "timeSyncOSClockOffset":0,
+          "timeSyncOSClockRateAdjustment":0
+        },
+        "ExternalStats":{
+          "valid":0
+        },
+        "Stats":{
+          "supported":"FULL_SUPPORT",
+          "samples":30355,
+          "skew":0,
+          "min":-804,
+          "max":448,
+          "mean":0,
+          "jitter":1252,
+          "secSinceReset":15191,
+          "stdDevSqr":458.098563,
+          "signalLostCnt":0,
+          "syncLostCnt":0,
+          "hardResetCnt":0
+        }
+      },
+      "sensors":[
+        {
+          "name":"FPGA",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":90.000000,
+          "value":60.099998,
+          "state":"OK",
+          "valueLowest":55.900002,
+          "valueHighest":62.700001
+        },
+        {
+          "name":"PCI-Bridge",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":110.000000,
+          "value":61.400002,
+          "state":"OK",
+          "valueLowest":58.000000,
+          "valueHighest":64.900002
+        },
+        {
+          "name":"FAN",
+          "unit":"RPM",
+          "limitLow":3640.000000,
+          "limitHigh":5150.000000,
+          "value":3960.000000,
+          "state":"OK",
+          "valueLowest":3960.000000,
+          "valueHighest":4020.000000
+        },
+        {
+          "name":"MCU",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":45.200001,
+          "state":"OK",
+          "valueLowest":43.099998,
+          "valueHighest":49.000000
+        },
+        {
+          "name":"PSU0",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":42.000000,
+          "state":"OK",
+          "valueLowest":42.000000,
+          "valueHighest":47.000000
+        },
+        {
+          "name":"PSU1",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":42.000000,
+          "state":"OK",
+          "valueLowest":37.000000,
+          "valueHighest":42.000000
+        },
+        {
+          "name":"PSU2A",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":66.300003,
+          "state":"OK",
+          "valueLowest":61.099998,
+          "valueHighest":69.000000
+        },
+        {
+          "name":"PSU2B",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":63.599998,
+          "state":"OK",
+          "valueLowest":59.000000,
+          "valueHighest":66.099998
+        },
+        {
+          "name":"OSC",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":38.500000,
+          "state":"OK",
+          "valueLowest":37.500000,
+          "valueHighest":41.200001
+        },
+        {
+          "name":"EXT",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":33.200001,
+          "state":"OK",
+          "valueLowest":32.200001,
+          "valueHighest":36.000000
+        },
+        {
+          "name":"PCB",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":48.500000,
+          "state":"OK",
+          "valueLowest":45.000000,
+          "valueHighest":51.000000
+        },
+        {
+          "PortSensors":[
+            {
+              "name":"CFP4",
+              "unit":"Temp. [C]",
+              "limitLow":-15.000000,
+              "limitHigh":80.000000,
+              "value":44.500000,
+              "state":"OK",
+              "valueLowest":34.799999,
+              "valueHighest":47.299999,
+              "port":0
+            },
+            {
+              "name":"GEARBOX",
+              "unit":"Temp. [C]",
+              "limitLow":0.000000,
+              "limitHigh":115.000000,
+              "value":57.700001,
+              "state":"OK",
+              "valueLowest":50.500000,
+              "valueHighest":60.299999,
+              "port":0
+            },
+            {
+              "name":"CFP4",
+              "unit":"Temp. [C]",
+              "limitLow":-15.000000,
+              "limitHigh":80.000000,
+              "value":44.500000,
+              "state":"OK",
+              "valueLowest":34.799999,
+              "valueHighest":47.299999,
+              "port":0
+            },
+            {
+              "name":"GEARBOX",
+              "unit":"Temp. [C]",
+              "limitLow":0.000000,
+              "limitHigh":115.000000,
+              "value":57.700001,
+              "state":"OK",
+              "valueLowest":50.500000,
+              "valueHighest":60.299999,
+              "port":0
+            },
+            {
+              "name":"Supply",
+              "unit":"Volt. [V]",
+              "limitLow":27.900000,
+              "limitHigh":37.880001,
+              "value":31.910000,
+              "state":"OK",
+              "valueLowest":31.830000,
+              "valueHighest":31.959999,
+              "port":0
+            },
+            {
+              "name":"Tx Bias 1",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":65.001999,
+              "state":"OK",
+              "valueLowest":64.758003,
+              "valueHighest":66.223999,
+              "port":0
+            },
+            {
+              "name":"Tx Bias 2",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":62.313999,
+              "state":"OK",
+              "valueLowest":62.313999,
+              "valueHighest":63.535999,
+              "port":0
+            },
+            {
+              "name":"Tx Bias 3",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":60.360001,
+              "state":"OK",
+              "valueLowest":60.116001,
+              "valueHighest":61.582001,
+              "port":0
+            },
+            {
+              "name":"Tx Bias 4",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":61.582001,
+              "state":"OK",
+              "valueLowest":61.091999,
+              "valueHighest":62.313999,
+              "port":0
+            },
+            {
+              "Tx 1":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1759.599976,
+              "state":"OK",
+              "valueLowest":1753.199951,
+              "valueHighest":1768.099976,
+              "port":0
+            },
+            {
+              "Tx 2":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1654.099976,
+              "state":"OK",
+              "valueLowest":1646.900024,
+              "valueHighest":1661.400024,
+              "port":0
+            },
+            {
+              "Tx 3":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1628.900024,
+              "state":"OK",
+              "valueLowest":1622.300049,
+              "valueHighest":1637.599976,
+              "port":0
+            },
+            {
+              "Tx 4":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1601.900024,
+              "state":"OK",
+              "valueLowest":1593.199951,
+              "valueHighest":1608.400024,
+              "port":0
+            },
+            {
+              "Rx 1":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":458.100006,
+              "state":"OK",
+              "valueLowest":454.500000,
+              "valueHighest":461.700012,
+              "port":0
+            },
+            {
+              "Rx 2":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":476.000000,
+              "state":"OK",
+              "valueLowest":473.600006,
+              "valueHighest":480.799988,
+              "port":0
+            },
+            {
+              "Rx 3":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":308.799988,
+              "state":"OK",
+              "valueLowest":306.399994,
+              "valueHighest":312.799988,
+              "port":0
+            },
+            {
+              "Rx 4":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":387.899994,
+              "state":"OK",
+              "valueLowest":386.100006,
+              "valueHighest":392.399994,
+              "port":0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id":1,
+      "name":"NT100E3-1-PTP-ANL Analysis Network Adapter PCIe Gen3 1x100Gb CFP4",
+      "ProductInfo":{
+        "Product No":"811-0001-99-06",
+        "Serial No":"0000-215005",
+        "PBA":"073-012101-03",
+        "AVR Version":"3.1",
+        "FPGA flash image #0":"200-9504-01-12",
+        "FPGA flash image #1":"200-9504-01-12"
+      },
+      "TimeSync":{
+        "Info":{
+          "timeSyncSupported":1,
+          "ptpSupported":0,
+          "timeSyncConnectorExt1":"NONE",
+          "timeSyncConnectorInt1":"NONE",
+          "timeSyncConnectorInt2":"NONE",
+          "tsRefPrio":" INT2;OSTIME",
+          "timeRef":"INT2",
+          "tsFreqRefPrio":" FREE_RUN",
+          "freqRef":"FREE_RUN",
+          "timeSyncNTTSInSyncLimit":5000,
+          "timeSyncOSInSyncLimit":50000,
+          "timeSyncPPSInSyncLimit":5000,
+          "timeSyncPTPInSyncLimit":5000,
+          "timeSyncInSyncStatus":"IN_SYNC",
+          "timeSyncCurrentConStatus":"SIGNAL_PRESENT",
+          "timeSyncPpsEnable":"DISABLED",
+          "timeSyncPpsSyncMode":"NOT_SYNCING",
+          "timeSyncClockAdjustmentMode":2,
+          "timeSyncHardReset":1,
+          "timeSyncTimeJumpThreshold":1,
+          "timeSyncTimeOffset":0,
+          "timeSyncPpsSampled":0,
+          "timeSyncTimeSkew":0,
+          "highFrequencySampling":0,
+          "timeSyncAdapterToOSSyncEnabled":0,
+          "timeSyncOSClockOffset":0,
+          "timeSyncOSClockRateAdjustment":0
+        },
+        "ExternalStats":{
+          "valid":1,
+          "extDevSyncSignalOk":0,
+          "extDevInSync":0,
+          "extDevTimeOfDayOk":0,
+          "extDevOsModeSyncEnabled":1,
+          "extDevOsModeInSync":1,
+          "extDevIsMaster":0,
+          "extAdapterIsMaster":1,
+          "extDevMasterID":6
+        },
+        "Stats":{
+          "supported":"FULL_SUPPORT",
+          "samples":1583008,
+          "skew":0,
+          "min":-548,
+          "max":304,
+          "mean":0,
+          "jitter":852,
+          "secSinceReset":15208,
+          "stdDevSqr":219.952140,
+          "signalLostCnt":0,
+          "syncLostCnt":3,
+          "hardResetCnt":0
+        }
+      },
+      "sensors":[
+        {
+          "name":"FPGA",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":90.000000,
+          "value":54.799999,
+          "state":"OK",
+          "valueLowest":52.500000,
+          "valueHighest":59.000000
+        },
+        {
+          "name":"PCI-Bridge",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":110.000000,
+          "value":58.799999,
+          "state":"OK",
+          "valueLowest":56.200001,
+          "valueHighest":63.200001
+        },
+        {
+          "name":"FAN",
+          "unit":"RPM",
+          "limitLow":3640.000000,
+          "limitHigh":5150.000000,
+          "value":4170.000000,
+          "state":"OK",
+          "valueLowest":4140.000000,
+          "valueHighest":4200.000000
+        },
+        {
+          "name":"MCU",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":38.599998,
+          "state":"OK",
+          "valueLowest":36.700001,
+          "valueHighest":42.599998
+        },
+        {
+          "name":"PSU0",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":42.000000,
+          "state":"OK",
+          "valueLowest":37.000000,
+          "valueHighest":47.000000
+        },
+        {
+          "name":"PSU1",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":42.000000,
+          "state":"OK",
+          "valueLowest":37.000000,
+          "valueHighest":47.000000
+        },
+        {
+          "name":"PSU2A",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":65.000000,
+          "state":"OK",
+          "valueLowest":60.500000,
+          "valueHighest":68.500000
+        },
+        {
+          "name":"PSU2B",
+          "unit":"Temp. [C]",
+          "limitLow":-40.000000,
+          "limitHigh":125.000000,
+          "value":61.599998,
+          "state":"OK",
+          "valueLowest":57.900002,
+          "valueHighest":65.199997
+        },
+        {
+          "name":"OSC",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":35.500000,
+          "state":"OK",
+          "valueLowest":34.700001,
+          "valueHighest":38.500000
+        },
+        {
+          "name":"EXT",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":34.500000,
+          "state":"OK",
+          "valueLowest":33.200001,
+          "valueHighest":37.500000
+        },
+        {
+          "name":"PCB",
+          "unit":"Temp. [C]",
+          "limitLow":0.000000,
+          "limitHigh":85.000000,
+          "value":46.000000,
+          "state":"OK",
+          "valueLowest":43.000000,
+          "valueHighest":49.500000
+        },
+        {
+          "PortSensors":[
+            {
+              "name":"CFP4",
+              "unit":"Temp. [C]",
+              "limitLow":-15.000000,
+              "limitHigh":80.000000,
+              "value":43.299999,
+              "state":"OK",
+              "valueLowest":33.900002,
+              "valueHighest":46.400002,
+              "port":1
+            },
+            {
+              "name":"GEARBOX",
+              "unit":"Temp. [C]",
+              "limitLow":0.000000,
+              "limitHigh":115.000000,
+              "value":55.299999,
+              "state":"OK",
+              "valueLowest":48.500000,
+              "valueHighest":58.500000,
+              "port":1
+            },
+            {
+              "name":"CFP4",
+              "unit":"Temp. [C]",
+              "limitLow":-15.000000,
+              "limitHigh":80.000000,
+              "value":43.299999,
+              "state":"OK",
+              "valueLowest":33.900002,
+              "valueHighest":46.400002,
+              "port":1
+            },
+            {
+              "name":"GEARBOX",
+              "unit":"Temp. [C]",
+              "limitLow":0.000000,
+              "limitHigh":115.000000,
+              "value":55.299999,
+              "state":"OK",
+              "valueLowest":48.500000,
+              "valueHighest":58.500000,
+              "port":1
+            },
+            {
+              "name":"Supply",
+              "unit":"Volt. [V]",
+              "limitLow":27.900000,
+              "limitHigh":37.880001,
+              "value":32.060001,
+              "state":"OK",
+              "valueLowest":32.020000,
+              "valueHighest":32.150002,
+              "port":1
+            },
+            {
+              "name":"Tx Bias 1",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":62.804001,
+              "state":"OK",
+              "valueLowest":62.560001,
+              "valueHighest":64.269997,
+              "port":1
+            },
+            {
+              "name":"Tx Bias 2",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":61.338001,
+              "state":"OK",
+              "valueLowest":61.338001,
+              "valueHighest":62.804001,
+              "port":1
+            },
+            {
+              "name":"Tx Bias 3",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":59.869999,
+              "state":"OK",
+              "valueLowest":59.625999,
+              "valueHighest":61.091999,
+              "port":1
+            },
+            {
+              "name":"Tx Bias 4",
+              "unit":"Curr. [mA]",
+              "limitLow":9.728000,
+              "limitHigh":89.599998,
+              "value":59.625999,
+              "state":"OK",
+              "valueLowest":59.382000,
+              "valueHighest":60.848000,
+              "port":1
+            },
+            {
+              "Tx 1":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1851.000000,
+              "state":"OK",
+              "valueLowest":1843.000000,
+              "valueHighest":1856.300049,
+              "port":1
+            },
+            {
+              "Tx 2":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1739.599976,
+              "state":"OK",
+              "valueLowest":1732.400024,
+              "valueHighest":1746.900024,
+              "port":1
+            },
+            {
+              "Tx 3":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1639.099976,
+              "state":"OK",
+              "valueLowest":1635.000000,
+              "valueHighest":1647.199951,
+              "port":1
+            },
+            {
+              "Tx 4":"Average",
+              "unit":"Power [uW]",
+              "limitLow":179.199997,
+              "limitHigh":5606.399902,
+              "value":1564.900024,
+              "state":"OK",
+              "valueLowest":1560.300049,
+              "valueHighest":1576.400024,
+              "port":1
+            },
+            {
+              "Rx 1":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":547.200012,
+              "state":"OK",
+              "valueLowest":542.700012,
+              "valueHighest":549.900024,
+              "port":1
+            },
+            {
+              "Rx 2":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":549.900024,
+              "state":"OK",
+              "valueLowest":544.500000,
+              "valueHighest":552.599976,
+              "port":1
+            },
+            {
+              "Rx 3":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":315.200012,
+              "state":"OK",
+              "valueLowest":312.799988,
+              "valueHighest":318.399994,
+              "port":1
+            },
+            {
+              "Rx 4":"Average",
+              "unit":"Power [uW]",
+              "limitLow":51.200001,
+              "limitHigh":3968.000000,
+              "value":385.600006,
+              "state":"OK",
+              "valueLowest":381.600006,
+              "valueHighest":388.000000,
+              "port":1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portData":{
+    "info":[
+      {
+        "port":0,
+        "MAC":"00:0D:E9:03:A4:2F",
+        "speed":"100G",
+        "state":"UP",
+        "type":"CFP4",
+        "duplex":"FULL",
+        "flow_control":"no",
+        "maxFrameSize":9018,
+        "MDI":"NA"
+      },
+      {
+        "port":1,
+        "MAC":"00:0D:E9:03:A4:39",
+        "speed":"100G",
+        "state":"UP",
+        "type":"CFP4",
+        "duplex":"FULL",
+        "flow_control":"no",
+        "maxFrameSize":9018,
+        "MDI":"NA"
+      }
+    ],
+    "stats":[
+      {
+        "port":0,
+        "ts":145625329360892928,
+        "tsStr":"2016\/02\/23-13:48:13.608929280",
+        "tsType":"UNIX",
+        "Rx":{
+          "RMON":{
+            "pkts":192424977335,
+            "octets":49260794197760,
+            "pkts_drop":0,
+            "pkts_64_Octets":0,
+            "pkts_65_127_Octets":0,
+            "pkts_128_255_Octets":0,
+            "pkts_256_511_Octets":192424865295,
+            "pkts_512_1023_Octets":0,
+            "pkts_1024_1518_Octets":0,
+            "pkts_oversize":0,
+            "pkts_undersize":0,
+            "pkts_multicast":0,
+            "pkts_jabber":0,
+            "pkts_fragments":0,
+            "pkts_collisions":0,
+            "pkts_crcAlignErrors":0,
+            "pkts_broadcast":0
+          },
+          "ExtRMON":{
+            "pkts_1519to2047_Octets":0,
+            "pkts_2048to4095_Octets":0,
+            "pkts_4096to8191_Octets":0,
+            "pkts_8192toMax_Octets":0,
+            "pkts_Alignment":0,
+            "pkts_CodeViolation":0,
+            "pkts_Crc":0,
+            "pkts_HardSlice":0,
+            "pkts_HardSliceJabber":0,
+            "pkts_unicast":192424865295
+          },
+          "ExtDrop":{
+            "pkts_Dedup":0,
+            "octets_Dedup":0,
+            "pkts_NoFilter":190958246286,
+            "octets_NoFilter":48885311049216,
+            "pkts_Overflow":0,
+            "octets_Overflow":0,
+            "pkts_MacBandwidth":0
+          },
+          "Decode":{
+            "pkts_BabyGiant":0,
+            "pkts_GiantUndersize":0,
+            "pkts_Isl":0,
+            "pkts_IslMpls":0,
+            "pkts_IslVlan":0,
+            "pkts_IslVlanMpls":0,
+            "pkts_Mpls":0,
+            "pkts_NotIslVlanMpls":0,
+            "pkts_Vlan":0,
+            "pkts_VlanMpls":0
+          },
+          "Checksum":{
+            "pkts_IpChkSumError":0,
+            "pkts_TcpChkSumError":0,
+            "pkts_UdpChkSumError":0
+          }
+        }
+      },
+      {
+        "port":1,
+        "ts":145625329360946054,
+        "tsStr":"2016\/02\/23-13:48:13.609460540",
+        "tsType":"UNIX",
+        "Rx":{
+          "RMON":{
+            "pkts":192368771898,
+            "octets":49246405605888,
+            "pkts_drop":0,
+            "pkts_64_Octets":0,
+            "pkts_65_127_Octets":0,
+            "pkts_128_255_Octets":0,
+            "pkts_256_511_Octets":192368653108,
+            "pkts_512_1023_Octets":0,
+            "pkts_1024_1518_Octets":0,
+            "pkts_oversize":0,
+            "pkts_undersize":0,
+            "pkts_multicast":0,
+            "pkts_jabber":0,
+            "pkts_fragments":0,
+            "pkts_collisions":0,
+            "pkts_crcAlignErrors":0,
+            "pkts_broadcast":0
+          },
+          "ExtRMON":{
+            "pkts_1519to2047_Octets":0,
+            "pkts_2048to4095_Octets":0,
+            "pkts_4096to8191_Octets":0,
+            "pkts_8192toMax_Octets":0,
+            "pkts_Alignment":0,
+            "pkts_CodeViolation":0,
+            "pkts_Crc":0,
+            "pkts_HardSlice":0,
+            "pkts_HardSliceJabber":0,
+            "pkts_unicast":192368653108
+          },
+          "ExtDrop":{
+            "pkts_Dedup":0,
+            "octets_Dedup":0,
+            "pkts_NoFilter":192368653108,
+            "octets_NoFilter":49246375195648,
+            "pkts_Overflow":0,
+            "octets_Overflow":0,
+            "pkts_MacBandwidth":0
+          },
+          "Decode":{
+            "pkts_BabyGiant":0,
+            "pkts_GiantUndersize":0,
+            "pkts_Isl":0,
+            "pkts_IslMpls":0,
+            "pkts_IslVlan":0,
+            "pkts_IslVlanMpls":0,
+            "pkts_Mpls":0,
+            "pkts_NotIslVlanMpls":0,
+            "pkts_Vlan":0,
+            "pkts_VlanMpls":0
+          },
+          "Checksum":{
+            "pkts_IpChkSumError":0,
+            "pkts_TcpChkSumError":0,
+            "pkts_UdpChkSumError":0
+          }
+        }
+      }
+    ]
+  },
+  "streamData":{
+    "numStreams":1,
+    "timestamp":145625329410000000,
+    "timestampStr":"2016\/02\/23-13:48:14.100000000",
+    "streams":[
+      {
+        "id":0,
+        "info":{
+          "minHostBufferSize":0,
+          "numHostBuffers":1,
+          "numaNode":0,
+          "useCount":0,
+          "state":"ACTIVE"
+        },
+        "stats":{
+          "pkts_forward":1472919025,
+          "octets_forward":377067270400,
+          "pkts_drop":0,
+          "octets_drop":0,
+          "pkts_flush":0,
+          "octets_flush":0
+        }
+      }
+    ]
+  }
+}
