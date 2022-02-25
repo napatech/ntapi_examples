@@ -1,0 +1,13 @@
+delete=all
+
+// Macro for first VLAN header
+DefineMacro("mVlan0VlanId", "Data[DynOffset=DynOffLayer2Frame;Offset=14;DataType=ByteStr2;DataMask=[11:0]]")
+
+
+// VLAN ID's in [5..100] to stream 0
+Assign[StreamId = 0; Priority = 2] = (mVlan0VlanId == (5..100))
+
+// Everything else to stream 1
+Assign[StreamId = 1; Priority = 3] = all
+
+

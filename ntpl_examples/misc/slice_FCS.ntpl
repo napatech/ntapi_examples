@@ -1,0 +1,9 @@
+delete=all
+
+
+// Slice Layer4Payload if UDP Destination == 53
+Assign[StreamId = 0; Priority = 0; Slice = EndOfFrame[-4]] = all
+
+//Assign[StreamId = 0; Priority = 0] = all
+
+

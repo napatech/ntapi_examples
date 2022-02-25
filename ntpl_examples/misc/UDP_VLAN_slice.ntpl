@@ -1,0 +1,23 @@
+delete=all
+
+// Macros for definition of the UDP Protocol Header
+DefineMacro("mUdpSrcPort",  "Data[DynOffset=DynOffUDPFrame;Offset=0;DataType=ByteStr2]")
+DefineMacro("mUdpDestPort", "Data[DynOffset=DynOffUDPFrame;Offset=2;DataType=ByteStr2]")
+
+// Macro for first VLAN header
+DefineMacro("mVlan0VlanId", "Data[DynOffset=DynOffLayer2Frame;Offset=14;DataType=ByteStr2;DataMask=[11:0]]")
+
+
+// Slice Layer4Payload if UDP Destination == 53
+Assign[StreamId = 0; Priority = 0; Slice = Layer4Payload[0]] = (mUdpDestPort == 53)
+
+// Slice packet to 32 bytes if VLAN ID == 32
+Assign[StreamId = 1; Priority = 1; Slice = StartOfFrame[32]] = (mVlan0VlanId == 32)
+
+// Slice 8 bytes into Layer4Header if VLAN ID == 5
+Assign[StreamId = 2; Priority = 2; Slice = Layer4Header[8]] = (mVlan0VlanId == 5)
+
+// Everything else to stream 2
+Assign[StreamId = 3; Priority = 3] = all
+
+

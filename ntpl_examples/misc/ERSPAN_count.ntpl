@@ -1,0 +1,13 @@
+delete=all
+
+DefineMacro("mInnerUdpDestPort", "Data[DynOffset=DynOffInnerUDPFrame;Offset=2;DataType=ByteStr2]")
+DefineMacro("mInnerTcpDestPort",      "Data[DynOffset=DynOffInnerTCPFrame;Offset=2;DataType=ByteStr2]")
+
+DefineMacro("mInnerEtherType", "Data[DynOffset=DynOffInnerTCPFrame;Offset=30;DataType=ByteStr2]")
+
+
+Assign[StreamId = 0; Priority = 0; color=1] = ((mInnerTcpDestPort == 8880) AND (mInnerEtherType == 8988))
+Assign[StreamId = 0; Priority = 1; color=2] = (mInnerTcpDestPort == 8880)
+Assign[StreamId = 0; Priority = 2; color=0] = all
+
+
