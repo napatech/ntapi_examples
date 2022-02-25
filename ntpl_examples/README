@@ -38,7 +38,7 @@
               vni == 4 -> stream 3 -> port 3
 
 
-- Retransmit
+- ReTx
 
     - traffic file: any
 
@@ -48,5 +48,14 @@
 
 	- ReTx_and_deliver_2host.ntpl: Similar to ReTx.ntpl, but also delivers traffic from port 0 to stream 0 
           and traffic from port 1 to stream 1
+
+- remove_outer_IP-GRE_headers
+
+    - traffic file: ./pcap/gre-sample.pcap
+
+    - examples:
+
+        - remove_outer_IP-GRE_headers.ntpl: removes the outer IPv4 and GRE (UDP) protocol layers leaving a 
+          packet consisting of the original ethernet header combined with the inner packet's protocols
 
 

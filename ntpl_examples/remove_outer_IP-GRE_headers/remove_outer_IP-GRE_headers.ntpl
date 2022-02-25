@@ -1,0 +1,12 @@
+# removes the IP and GRE (UDP) layer from the outer packet
+# preserving the inner packet and the Ethernet header
+
+delete=all
+
+Define OuterIPBytes = HeaderStripper(Begin=Layer3Header[0], End=InnerLayer3Header[0], Offset0=Layer2Header[12], Cmd0=InnerEtherType)
+
+Assign[StreamID=0; Priority=0;  HeaderStripper=OuterIPBytes] = TunnelType == GREv0
+Assign[StreamID=1; Priority=1] = all
+
+
+

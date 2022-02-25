@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Napatech A/S. All rights reserved.
+ * Copyright 2022 Napatech A/S. All rights reserved.
  * 
  * 1. Copying, modification, and distribution of this file, or executable
  * versions of this file, is governed by the terms of the Napatech Software
@@ -36,6 +36,7 @@
  * THE EXCLUSION OR LIMITATION OF LIABILITY FOR PERSONAL INJURY, OR OF
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION MAY NOT APPLY TO YOU.
  */
+
 
 /**
  * @internal

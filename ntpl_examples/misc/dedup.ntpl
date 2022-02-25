@@ -1,0 +1,6 @@
+delete=all
+
+DeduplicationConfig[Drop=Duplicate; Retransmit=Nonduplicate] = GroupID == 1
+Define ckRecipe1 = CorrelationKey(DeduplicationGroupID=1,Begin=Layer4Header[4],End=Layer4Header[8])
+Assign[StreamId=drop; DestinationPort=1; CorrelationKey=ckRecipe1] = (Port == 1)
+

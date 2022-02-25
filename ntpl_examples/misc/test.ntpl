@@ -1,0 +1,6 @@
+delete=all
+
+DeduplicationConfig[Drop=Duplicate; Retransmit=Nonduplicate] = GroupID == 0
+Define ipHdr_ckRecipe0 = CorrelationKey(DeduplicationGroupID=0,Begin=Layer3Header[4],End=Layer4Header[0], StaticMask=(IPTOSDSCP,IPTOSECN,IPTTL,IPFLAGS,IPCHK,IPFLOW,IPHOP,IPTC))
+Assign[StreamId=drop; DestinationPort=0; Slice=StartOfFrame[70]; CorrelationKey=ipHdr_ckRecipe0] = (Port == 0)
+
