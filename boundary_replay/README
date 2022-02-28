@@ -1,0 +1,17 @@
+The boundary_replay tool replays a PCAP file repeating every 10 mSec.
+The packets will be transmitted starting at each 10 mSec boundary of
+the adapter's clock (which in turn can be synchronized to an external
+time server) with the IFG of each packets determined precisely by the
+timestamps in the PCAP file.\n"
+
+Syntax:
+   boundary_replay -f <file> -p <port> [-m <modfac>] [-s <starttime>] [-l <loop_count>] [--help]
+
+  'f', "file",       "Specifies the file to replay.", NULL, 0, 0, "file name"),
+  'p', "port",       "Port on which a pcap file should be replayed", NULL, 0, 0, "opt_port"),
+  'l', "loop",       "limit replay this many iterations of the file and terminate", NULL, 0, 0, "opt_loop"),
+  'm', "modfac",     "Transmission begin time stamp modulus factor in seconds (default 15 secs.).", NULL, 0, 0, "modfac"),
+  'd', "path_delay", "Path Delay in 10 nSec clicks", NULL, 0, 0, "opt_path_delay"),
+  's', "starttime",  "Absolute transmission begin time stamp (UTC).\n"
+                     "Format: YYYY/MM/DD-HH:MM:SS, HH:MM:SS or HH:MM", NULL, 0, 0, "starttime"),
+
