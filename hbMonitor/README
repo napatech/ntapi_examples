@@ -1,0 +1,1 @@
+hbMonitor provides a dynamic histogram display of the utilization of both the host buffer memory as well as the SDRAM burst buffer memory.  This tool is extremly useful for visualizing how, and when, host buffer memory is backing up.

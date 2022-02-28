@@ -1,0 +1,13 @@
+Addrswap_replay is an app that allows you play a PCAP file substituting the IP addresses of select frames as the file is played. To use this you simply need to provide a simple yaml file containing a list of addresses found in the PCAP file followed by the address to replace it with in the following format:
+    10.0.2.15: 1.1.1.1
+    10.0.2.16: 1.1.1.2
+    10.0.2.17: 1.1.1.3
+    Etc.
+
+As you replay a PCAP file any IP addresses that match the left-hand-side are replaced with the value on the right-hand-side before the packet is transmitted. 
+
+For example, given a PCAP file named foo.pcap you can create a foo.yaml file with the addresses to replace and run it with the following command line:
+# ./addrswap_replay -p 1 -f foo.pcap -s foo.yaml
+
+
+
