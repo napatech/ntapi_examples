@@ -80,13 +80,8 @@ NapatechSource::NapatechSource(const std::string& path, bool is_live, const std:
 void NapatechSource::Open()
 {
 
-	printf("NapatechSource::Open() - stream_id: %d\n", stream_id);
+	//printf("NapatechSource::Open() - stream_id: %d\n", stream_id);
 
-//	uint64_t test_value = zeek::BifConst::Napatech::test_value;
-//	printf("test_value: %ld\n", test_value);
-
-//	// Last argument is the HBA - Host Buffer Allowance, or the amount of the Host Buffer that
-	// can be held back. Need to createa  BIF to configure this.
 	status = NT_NetRxOpen(&rx_stream, "BroStream", NT_NET_INTERFACE_PACKET, stream_id, -1);
 	if ( status != NT_SUCCESS) {
 		Info("Failed to open stream");
@@ -230,7 +225,7 @@ bool NapatechSource::SetFilter(int index)
 
 void NapatechSource::Statistics(Stats* s)
 {
-	printf("Statistics\n");
+//	printf("Statistics\n");
 	// Grab the counter from this plugin for how much it has seen.
 	s->received = stats.received;
 	s->bytes_received = stats.bytes_received;
