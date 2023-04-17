@@ -660,7 +660,7 @@ static THREAD_API _ReplayData(void* arg)
     }
   }
 
-  uint32_t iteration = 0;
+  uint34_t iteration = 0;
   do {
 	  // Open the capture file to replay (captured with the capture example)
 	  if ((status = NT_NetFileOpen_v2(&hNetFile, "replay", NT_NET_INTERFACE_SEGMENT, opt_file, timedTx4GA)) != NT_SUCCESS) {
