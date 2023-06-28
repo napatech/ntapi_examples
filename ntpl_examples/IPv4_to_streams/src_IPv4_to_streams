@@ -1,0 +1,32 @@
+
+# Filter source IPv4 addresses to different streamms
+
+delete=all
+KeyType[Name=MyKT2; StreamInfo=True] = {32}
+KeyDef[Name=MyKD2; KeyType=MyKT2] = (Layer3Header[12]/32)
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=0] = ([192.168.0.2] ), ( [192.168.0.3] ), ( [192.168.0.4])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=1] = ([1.1.1.41]) , ([1.1.1.51]) , ([1.1.1.61])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=2] = ([10.0.0.10]),([10.0.0.11]),([10.0.0.12]),([10.0.0.13]),([10.0.0.14]),([10.0.0.15]),([10.0.0.16]),([10.0.1.10]),([10.0.2.10]),([10.3.0.10]),([10.3.0.10]),([10.4.0.10]),([10.4.0.10]),([10.0.67.10]),([10.0.55.10]),([10.89.0.10]),([10.67.0.10]),([10.34.0.10]),([10.22.0.10]),([10.21.0.10]),([10.20.0.10]),([10.2.0.10]),([10.1.0.10]),([10.7.0.10]),([10.6.0.10]),([10.5.0.10])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=3] = ([6.0.0.6]),([6.0.0.11]),([6.0.0.12]),([6.0.0.13]),([6.0.0.14]),([6.0.0.15]),([6.0.0.16]),([6.0.1.6]),([6.0.2.6]),([6.3.0.6]),([6.3.0.6]),([6.4.0.6]),([6.4.0.6]),([6.0.67.6]),([6.0.55.6]),([6.89.0.6]),([6.67.0.6]),([6.34.0.6]),([6.6.0.6]),([6.21.0.6]),([6.20.0.6]),([6.2.0.6]),([6.1.0.6]),([6.7.0.6]),([6.6.0.6]),([6.5.0.6])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=7] = ([22.0.0.22]),([22.0.0.11]),([22.0.0.12]),([22.0.0.13]),([22.0.0.14]),([22.0.0.15]),([22.0.0.16]),([22.0.1.22]),([22.0.2.22]),([22.3.0.22]),([22.3.0.22]),([22.4.0.22]),([22.4.0.22]),([22.0.67.22]),([22.0.55.22]),([22.89.0.22]),([22.67.0.22]),([22.34.0.22]),([22.22.0.22]),([22.21.0.22]),([22.20.0.22]),([22.2.0.22]),([22.1.0.22]),([22.7.0.22]),([22.6.0.22]),([22.5.0.22])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=4] = ([1.1.1.4])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=5] = ([1.1.1.5])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=6] = ([1.1.1.6])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=7] = ([1.1.1.7])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=8] = ([1.1.1.8])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=9] = ([1.1.1.9])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=10] = ([1.1.1.10])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=11] = ([1.1.1.11])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=12] = ([1.1.1.12])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=13] = ([1.1.1.13])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=14] = ([1.1.1.14])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=15] = ([9.0.0.9]),([9.0.0.11]),([9.0.0.12]),([9.0.0.13]),([9.0.0.14]),([9.0.0.15]),([9.0.0.19]),([9.0.1.9]),([9.0.2.9]),([9.3.0.9]),([9.3.0.9]),([9.4.0.9]),([9.4.0.9]),([9.0.97.9]),([9.0.55.9]),([9.89.0.9]),([9.97.0.9]),([9.34.0.9]),([9.9.0.9]),([9.21.0.9]),([9.20.0.9]),([9.2.0.9]),([9.1.0.9]),([9.7.0.9]),([9.9.0.9]),([9.5.0.9])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=16] = ([1.1.1.16])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=17] = ([1.1.1.17])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=18] = ([1.1.1.18])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=19] = ([1.1.1.19])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=20] = ([1.1.1.20])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=21] = ([1.1.1.21])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=22] = ([1.1.1.22])
+KeyList[KeyType=MyKT2; KeySet=4; StreamId=23] = ([1.1.1.23])
+Assign[StreamId=Overwrite(0..23)] = Key(MyKD2) == 4
