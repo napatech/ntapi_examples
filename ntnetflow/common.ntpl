@@ -1,0 +1,25 @@
+DefineMacro("NTNF_XXXXX_KD4SPEC", "(Layer3Header[12]/32/32, Layer4Header[0]/16/16)")
+DefineMacro("NTNF_XXXXX_KD6SPEC", "(Layer3Header[8]/128/128, Layer4Header[0]/16/16)")
+
+KeyType[Name=NTNF_XXXXX_KT4] = {sw_32_32, sw_16_16}
+KeyType[Name=NTNF_XXXXX_KT6] = {sw_128_128, sw_16_16}
+KeyDef[Name=NTNF_XXXXX_KD4; KeyType=NTNF_XXXXX_KT4; IpProtocolField=Outer] = NTNF_XXXXX_KD4SPEC
+KeyDef[Name=NTNF_XXXXX_KD6; KeyType=NTNF_XXXXX_KT6; IpProtocolField=Outer] = NTNF_XXXXX_KD6SPEC
+
+DefineMacro("NTNF_XXXXX_PROTOCHECK", "Layer3Protocol==IPv4,IPv6 and Layer4Protocol==UDP,TCP")
+DefineMacro("NTNF_XXXXX_FILTERCHECK", "Port==$1 AND NTNF_XXXXX_PROTOCHECK")
+DefineMacro("NTNF_XXXXX_PORTS", "(Port==NTNF_XXXXX_UPSTREAM_PORT,NTNF_XXXXX_DOWNSTREAM_PORT)")
+DefineMacro("NTNF_XXXXX_UPSTREAM", "(Port==NTNF_XXXXX_UPSTREAM_PORT)")
+DefineMacro("NTNF_XXXXX_DOWNSTREAM", "(Port==NTNF_XXXXX_DOWNSTREAM_PORT)")
+
+DefineMacro("NTNF_XXXXX_UPSTREAM_KEYTESTX", "(Layer3Protocol==IPv$1 AND Key(NTNF_XXXXX_KD$1, KeyID=NTNF_XXXXX_KEY_ID_IPV$1, CounterSet=CSA) == $2)")
+DefineMacro("NTNF_XXXXX_DOWNSTREAM_KEYTESTX", "(Layer3Protocol==IPv$1 AND Key(NTNF_XXXXX_KD$1, KeyID=NTNF_XXXXX_KEY_ID_IPV$1, CounterSet=CSB, FieldAction=Swap) == $2)")
+DefineMacro("NTNF_XXXXX_UPSTREAM_KEYTEST", "(NTNF_XXXXX_UPSTREAM_KEYTESTX(4,$1,0,0) OR NTNF_XXXXX_UPSTREAM_KEYTESTX(6,$1,0,0))")
+DefineMacro("NTNF_XXXXX_DOWNSTREAM_KEYTEST", "(NTNF_XXXXX_DOWNSTREAM_KEYTESTX(4,$1,0,0) OR NTNF_XXXXX_DOWNSTREAM_KEYTESTX(6,$1,0,0))")
+
+DefineMacro("NTNF_XXXXX_HASH4", "HashWord0_3=Layer3Header[$1]/32,HashWord4_7=Layer3Header[$2]/32,HashWord8=Layer4Header[$3]/16,HashWord9=Layer4Header[$4]/16,HashWordP=IpProtocol")
+DefineMacro("NTNF_XXXXX_HASH6", "HashWord0_3=Layer3Header[$1]/128,HashWord4_7=Layer3Header[$2]/128,HashWord8=Layer4Header[$3]/16,HashWord9=Layer4Header[$4]/16,HashWordP=IpProtocol")
+DefineMacro("NTNF_XXXXX_HASHUP4", "NTNF_XXXXX_HASH4(12,16,0,2)")
+DefineMacro("NTNF_XXXXX_HASHDOWN4", "NTNF_XXXXX_HASH4(16,12,2,0)")
+DefineMacro("NTNF_XXXXX_HASHUP6", "NTNF_XXXXX_HASH6(8,24,0,2)")
+DefineMacro("NTNF_XXXXX_HASHDOWN6", "NTNF_XXXXX_HASH6(24,8,2,0)")
