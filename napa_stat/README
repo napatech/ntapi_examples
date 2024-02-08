@@ -1,0 +1,16 @@
+This example polls the ports on all Napatech NICs installed in a system once per second. It prints to the screen the port state, RX packet count, and RX by count. Here is an example output with three Napatech NICs installed, two with 4 ports, one with 2 ports (10 total ports):
+
+Date: 8:2:2024
+Time: 12:52 22
+
+Napatech Port  0 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  1 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  2 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  3 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  4 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  5 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  6 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  7 is OK - RX Packet Count: 0000000000000565, Byte Count: 0000000000092266
+Napatech Port  8 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+Napatech Port  9 is OK - RX Packet Count: 0000000000000000, Byte Count: 0000000000000000
+--------------------------------------------------------------------------------
